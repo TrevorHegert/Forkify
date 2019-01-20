@@ -18,7 +18,7 @@ const state = {};
 
 const controlSearch = async () => {
     // 1. Get query from UI
-    const query = 'pizza' //TESTING - PLEASE UPDATE
+    const query = 'chicken' //TESTING - PLEASE UPDATE
 
     if (query) {
         //2. Create new search object and add to state
@@ -30,12 +30,11 @@ const controlSearch = async () => {
         await state.search.getResults();
 
         //5. Display results to UI
+        console.log(state.search.result);
     }
 };
 
 document.querySelector('.search').addEventListener('submit', e => {
     e.preventDefault();
-
+    controlSearch();
 });
-
-search.getResults();
