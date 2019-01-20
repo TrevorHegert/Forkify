@@ -9,6 +9,14 @@
 
 import Search from './models/Search';
 
+//Global State
+//  -Search Object
+//  -Current Recipe Object
+//  -Shopping List Object
+//  -Liked Recipes
+const state = {};
+
+
 const search = new Search('pizza');
 console.log(search);
 search.getResults();
