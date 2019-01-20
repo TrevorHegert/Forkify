@@ -16,7 +16,26 @@ import Search from './models/Search';
 //  -Liked Recipes
 const state = {};
 
+const controlSearch = async () => {
+    // 1. Get query from UI
+    const query = 'pizza' //TESTING - PLEASE UPDATE
 
-const search = new Search('pizza');
-console.log(search);
+    if (query) {
+        //2. Create new search object and add to state
+        state.search = new Search(query);
+
+        //3. Prepare UI for Results
+
+        //4. Search for recipes
+        await state.search.getResults();
+
+        //5. Display results to UI
+    }
+};
+
+document.querySelector('.search').addEventListener('submit', e => {
+    e.preventDefault();
+
+});
+
 search.getResults();
