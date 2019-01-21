@@ -23,19 +23,20 @@ const state = {};
 const controlSearch = async () => {
     // 1. Get query from UI
     const query = searchView.getInput();
-    console.log(query);
 
     if (query) {
         //2. Create new search object and add to state
         state.search = new Search(query);
 
         //3. Prepare UI for Results
+        searchView.clearInput();
+        searchView.clearResults();
 
         //4. Search for recipes
         await state.search.getResults();
 
         //5. Display results to UI
-        console.log(state.search.result);
+        searchView.renderResults(state.search.result);
     }
 };
 
