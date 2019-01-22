@@ -7,7 +7,7 @@ export const elements = {
 };
 
 export const elementStrings = {
-    loader: 'loader',
+    loader: 'loader'
 };
 
 export const renderLoader = parent => {

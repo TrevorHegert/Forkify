@@ -8,6 +8,7 @@
 // page: (optional) Used to get additional results
 
 import Search from "./models/Search";
+import Recipe from "./models/Recipe";
 import * as searchView from "./views/searchView";
 import {
     elements,
