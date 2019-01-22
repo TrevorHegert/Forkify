@@ -1,4 +1,4 @@
-//API key: 07dd95208f5ca6a6f32bc77083051683 
+//API key: 07dd95208f5ca6a6f32bc77083051683
 //Search URL: https://www.food2fork.com/api/search
 //Get URL: https://www.food2fork.com/api/get
 
@@ -7,13 +7,13 @@
 // sort: (optional) How the results should be sorted. See Below for details.
 // page: (optional) Used to get additional results
 
-import Search from './models/Search';
-import * as searchView from './views/searchView';
+import Search from "./models/Search";
+import * as searchView from "./views/searchView";
 import {
     elements,
     renderLoader,
     clearLoader
-} from './views/base';
+} from "./views/base";
 
 //Global State
 //  -Search Object
@@ -35,7 +35,6 @@ const controlSearch = async () => {
         searchView.clearResults();
         renderLoader(elements.searchResultList);
 
-
         //4. Search for recipes
         await state.search.getResults();
 
@@ -45,7 +44,16 @@ const controlSearch = async () => {
     }
 };
 
-elements.searchForm.addEventListener('submit', e => {
+elements.searchForm.addEventListener("submit", e => {
     e.preventDefault();
     controlSearch();
+});
+
+elements.searchResultPages.addEventListener('click', e => {
+    const btn = e.target.closest('.btn-inline');
+    if (btn) {
+        const goToPage = parseInt(btn.dataset.goto, 10);
+        searchView.clearResults();
+        searchView.renderResults(state.search.result, goToPage);
+    }
 });
