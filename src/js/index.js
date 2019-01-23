@@ -26,7 +26,11 @@ const state = {};
 //SEARCH CONTROLLER
 const controlSearch = async () => {
     // 1. Get query from UI
-    const query = searchView.getInput();
+    //////////////////////////////////////////////////////////////////PLEASE REMOVE FROM FINAL CODE    
+    const query = 'pizza';
+    //////////////////////////////////////////////////////////////////PLEASE REMOVE FROM FINAL CODE    
+
+    //const query = searchView.getInput();                        PLEASE RESTORE IN FINAL CODE
 
     if (query) {
         //2. Create new search object and add to state
@@ -57,6 +61,14 @@ elements.searchForm.addEventListener("submit", e => {
     controlSearch();
 });
 
+/////////////////////////////////////////////////////////////////////PLEASE REMOVE IN FINAL CODE
+//Load Search Results on Page Load for Testing 
+window.addEventListener("load", e => {
+    e.preventDefault();
+    controlSearch();
+});
+/////////////////////////////////////////////////////////////////////PLEASE REMOVE IN FINAL CODE
+
 elements.searchResultPages.addEventListener('click', e => {
     const btn = e.target.closest('.btn-inline');
     if (btn) {
@@ -79,6 +91,9 @@ const controlRecipe = async () => {
 
         //Create new recipe object
         state.recipe = new Recipe(id);
+
+        //TESTING
+        window.r = state.recipe;
 
         try {
             //Get recipe data

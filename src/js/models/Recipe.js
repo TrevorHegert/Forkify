@@ -36,8 +36,8 @@ export default class Recipe {
     }
 
     parseIngredients() {
-        const unitsLong = ['tablespoons', 'tablespoon', 'ounce', 'ounces', 'teaspoon', 'teaspoons', 'cups', 'pounds'];
-        const unitShort = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'pound'];
+        const unitsLong = ['tablespoons', 'tablespoon', 'ounces', 'ounce', 'teaspoons', 'teaspoon', 'cups', 'pounds'];
+        const unitsShort = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'pound'];
         const newIngredients = this.ingredients.map(el => {
             //1. Uniform unit names
             let ingredient = el.toLowerCase();
@@ -46,9 +46,33 @@ export default class Recipe {
             });
 
             //2. Remove unneeded punctuation
-            ingredient = ingredient.replace(/ *\([^)]*\) */g, '');
+            ingredient = ingredient.replace(/ *\([^)]*\) */g, ' ');
 
             //3. Parse Ingredients into Count, Unit and Ingredient
+            const arrIng = ingredient.split(' ');
+            const unitIndex = arrIng.findIndex(el2 => unitsShort.includes(el2));
+
+            let objIng;
+
+            if (unitIndex > -1) {
+                //There is a unit
+            } else if (parseInt(arrIng[0], 10)) {
+                //There is NO unit, but 1st element is a number
+                objIng = {
+                    count: parseInt(arrIng[0], 10),
+                    unit: '',
+                    ingredient: arrIng.slice(1).join(' ')
+                }
+            } else if (unitIndex === -1) {
+                //There is NO unit, and 1st element NOT a number
+                objIng = {
+                    count: 1,
+                    unit: '',
+                    ingredient
+                }
+            }
+
+            return ingredient;
         });
         this.ingredients = newIngredients;
     }
