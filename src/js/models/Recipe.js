@@ -61,13 +61,10 @@ export default class Recipe {
                 const arrCount = arrIng.slice(0, unitIndex);
 
                 let count;
-                let num;
                 if (arrCount.length === 1) {
-                    num = eval(arrIng[0].replace('-', '+'));
-                    count = num.toFixed(2);
+                    count = eval(arrIng[0].replace('-', '+'));
                 } else {
-                    num = eval(arrIng.slice(0, unitIndex).join('+'));
-                    count = num.toFixed(2);
+                    count = eval(arrIng.slice(0, unitIndex).join('+'));
                 }
 
                 objIng = {
