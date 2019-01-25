@@ -79,11 +79,12 @@ const controlRecipe = async () => {
 
         //Create new recipe object
         state.recipe = new Recipe(id);
+        //console.log(state.recipe);
 
         try {
             //Get recipe data and parse Ingredients
             await state.recipe.getRecipe();
-            state.recipe.parseIngregients();
+            state.recipe.parseIngredients();
 
             //Call calcTime & calcServings
             state.recipe.calcServings();
