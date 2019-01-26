@@ -17,6 +17,7 @@ export default class Recipe {
             this.imageURL = result.data.recipe.image_url;
             this.source = result.data.recipe.source_url;
             this.ingredients = result.data.recipe.ingredients;
+            console.log(result);
         } catch (error) {
             console.log(error);
             alert("Something Went Wrong...  :(");
@@ -35,8 +36,8 @@ export default class Recipe {
     }
 
     parseIngredients() {
-        const unitsLong = ['tablespoons', 'tablespoon', 'ounces', 'ounce', 'teaspoons', 'teaspoon', 'cups', 'pounds'];
-        const unitsShort = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'pound'];
+        const unitsLong = ['tablespoons', 'tablespoon', 'ounces', 'ounce', 'teaspoons', 'teaspoon', 'cups', 'pound', 'pounds'];
+        const unitsShort = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'lb', 'lb'];
         const units = [...unitsShort, 'kg', 'g'];
 
         const newIngredients = this.ingredients.map(el => {
