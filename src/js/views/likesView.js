@@ -19,7 +19,7 @@ export const renderLike = like => {
         <li>
             <a class="likes__link" href="#${like.id}">
                 <figure class="likes__fig">
-                    <img src="${like.imageURL}" alt="${like.title}">
+                    <img src="${like.image}" alt="${like.title}">
                 </figure>
                 <div class="likes__data">
                     <h4 class="likes__name">${limitRecipeTitle(like.title)}</h4>
@@ -29,7 +29,7 @@ export const renderLike = like => {
         </li>
     `;
     elements.likesList.insertAdjacentHTML('beforeend', markup);
-}
+};
 
 export const deleteLike = id => {
     const el = document.querySelector(`.likes__link[href*="${id}"]`).parentElement;
