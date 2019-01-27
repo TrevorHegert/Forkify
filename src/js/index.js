@@ -27,8 +27,6 @@ import {
 //  -Current Recipe Object
 //  -Shopping List Object
 //  -Liked Recipes
-const state = {};
-window.state = state;
 
 //SEARCH CONTROLLER
 const controlSearch = async () => {
@@ -239,5 +237,3 @@ elements.recipe.addEventListener('click', e => {
         controlLike();
     }
 });
-
-window.l = new List();
